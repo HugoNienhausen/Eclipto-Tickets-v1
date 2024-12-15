@@ -1,0 +1,35 @@
+<div class="modal-overlay" (click)="closeEventCreator()"></div> <!-- Fondo oscuro o borroso -->
+<div class="event-creator-card">
+  <div class="card-header">
+    <span class="close-btn" (click)="closeEventCreator()">✖</span>
+  </div>
+  <div class="card-body">  
+    <h2>Crear un Evento</h2>
+    <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)">
+      <div class="form-group">
+        <label for="eventName">Nombre del evento</label>
+        <input type="text" id="eventName" name="eventName" ngModel required />
+      </div>
+      
+      <div class="form-group">
+        <label for="eventDescription">Descripción del evento</label>
+        <textarea id="eventDescription" name="eventDescription" ngModel required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="eventDate">Fecha del evento</label>
+        <input type="date" id="eventDate" name="eventDate" ngModel required />
+      </div>
+      <div class="form-group">
+        <label for="maxAttendees">Máximo de asistentes</label>
+        <input type="number" id="maxAttendees" name="maxAttendees" ngModel required />
+      </div>
+      
+      <div class="form-group">
+        <label for="ticketPrice">Precio de entrada</label>
+        <input type="number" id="ticketPrice" name="ticketPrice" ngModel required min="0" step="0.01" />
+      </div>
+  
+      <button type="submit" class="submit-btn" [disabled]="eventForm.invalid">Crear Evento</button>
+    </form>
+  </div>
+</div>

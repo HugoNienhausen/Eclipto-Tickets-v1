@@ -1,0 +1,19 @@
+.admin-panel {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .create-event-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .create-event-btn:hover {
+    background-color: #0056b3;
+  }

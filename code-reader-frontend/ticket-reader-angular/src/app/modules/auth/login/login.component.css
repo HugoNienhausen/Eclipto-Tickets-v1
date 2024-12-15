@@ -1,0 +1,156 @@
+/* General */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5; /* Color de fondo suave */
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Contenedor de la tarjeta */
+  .card {
+    margin: 20px auto;
+    padding: 20px 20px; /* Añadir padding uniforme arriba, abajo, izquierda y derecha */
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    width: 90%; 
+    max-width: 400px;
+    text-align: left;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+  }
+  
+  /* Grupos de formulario */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Etiquetas de formulario */
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  /* Inputs */
+  input {
+    width: calc(100% - 20px); /* Ajusta el ancho a 100% con un margen interno de 10px a cada lado */
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease-in-out;
+    box-sizing: border-box; /* Asegura que el padding y border no desborden el contenedor */
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #80bdff;
+  }
+  
+  /* Botón de enviar */
+  button {
+    width: 100%;  /* El botón ahora ocupa todo el ancho del contenedor */
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  button:disabled {
+    background-color: #6c757d;
+  }
+  
+  /* Mensajes de error */
+  .error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* Espaciado en los párrafos */
+  p {
+    margin: 5px 0;
+  }
+  
+  /* Estilo para el checkbox y su contenedor */
+  .checkbox-wrapper-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-wrapper-2 label {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  
+  /* Checkbox */
+  .checkbox-wrapper-2 .ikxBAC {
+    appearance: none;
+    background-color: #dfe1e4;
+    border-radius: 50px;
+    width: 40px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkbox-wrapper-2 .ikxBAC::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #fff;
+    top: 3px;
+    left: 3px;
+    transition: left 0.3s ease;
+  }
+  
+  .checkbox-wrapper-2 .ikxBAC:checked {
+    background-color: #4CAF50;
+  }
+  
+  .checkbox-wrapper-2 .ikxBAC:checked::after {
+    left: 23px;
+  }
+  
+  /* Espaciado adicional en el checkbox */
+  .checkbox-wrapper-2 {
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 600px) {
+    .card {
+      width: 100%; /* La tarjeta ahora se ajustará a todo el ancho en pantallas pequeñas */
+      padding: 15px;
+    }
+  
+    input {
+      width: calc(100% - 20px); /* Asegurar que los inputs tengan suficiente margen en los laterales */
+    }
+  
+    button {
+      padding: 10px;
+    }
+  }

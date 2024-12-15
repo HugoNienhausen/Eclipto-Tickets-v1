@@ -1,0 +1,8 @@
+<div class="admin-panel">
+
+    <h1>Panel de Administrador</h1>
+    <button (click)="createEvent()" class="create-event-btn">Crear Evento</button>
+    <!-- Mostrar el formulario de creación de eventos cuando showEventCreator es true -->
+    <app-event-creator *ngIf="showEventCreator" (close)="hideEventCreator()" (eventCreated)="onEventCreated()"></app-event-creator>
+    <app-event-list #eventList></app-event-list>
+  </div>

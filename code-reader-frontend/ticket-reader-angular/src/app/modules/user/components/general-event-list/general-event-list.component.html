@@ -1,0 +1,18 @@
+<div *ngIf="events.length > 0; else noEvents" class="grid-container">
+  <div *ngFor="let event of events" class="event-card">
+    <h2>{{ event.name }}</h2>
+    <p>{{ event.description }}</p>
+    <p><strong>Fecha:</strong> {{ event.date }}</p>
+    <p><strong>Máx. Asistentes:</strong> {{ event.maxAttendees }}</p>
+    <p><strong>Precio por Entrada:</strong> {{ event.ticketPrice | currency }}</p>
+    <!-- Botón para comprar entrada -->
+    <button (click)="openTicketBuy(event)">Comprar Entrada</button>
+  </div>
+</div>
+
+<!-- Componente ticketBuy mostrado solo cuando selectedEvent tiene un valor -->
+<app-ticket-buy *ngIf="selectedEvent" [event]="selectedEvent" (close)="selectedEvent = null"></app-ticket-buy>
+
+<ng-template #noEvents>
+  <p>No hay eventos disponibles</p>
+</ng-template>

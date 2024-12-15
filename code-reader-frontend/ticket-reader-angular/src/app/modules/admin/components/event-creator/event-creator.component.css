@@ -1,0 +1,90 @@
+/* Fondo oscuro o borroso */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  backdrop-filter: blur(5px); /* Fondo borroso */
+  z-index: 999; /* Colocar el fondo por encima del contenido */
+}
+
+/* Tarjeta centrada */
+.event-creator-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Colocar la tarjeta por encima del fondo oscuro */
+}
+
+.card-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 20px;
+  color: #f00;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-creator-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #218838;
+}

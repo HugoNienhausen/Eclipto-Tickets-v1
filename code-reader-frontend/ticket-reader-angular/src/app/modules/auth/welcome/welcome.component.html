@@ -1,0 +1,14 @@
+<div class="welcome-container">
+  <h2>Lector de Tickets</h2>
+
+  <div class="button-container">
+    <button (click)="toggleForms('login')">Iniciar Sesión</button>
+    <button (click)="toggleForms('register')">Registrarse</button>
+  </div>
+
+  <!-- Componente de Login -->
+  <app-login *ngIf="showLoginForm" (loginSuccess)="onLoginSuccess()"></app-login>
+
+  <!-- Componente de Registro -->
+  <app-register *ngIf="showRegisterForm" (registerSuccess)="onRegisterSuccess()"></app-register>
+</div>
