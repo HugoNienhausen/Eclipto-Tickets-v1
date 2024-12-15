@@ -1,19 +1,51 @@
 .admin-panel {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .create-event-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-  
-  .create-event-btn:hover {
-    background-color: #0056b3;
-  }
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.nav-buttons {
+  position: absolute;
+  top: 10px;
+  right: 80px; /* Ajustado para no solaparse con el botón Home */
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background-color: #0056b3;
+}
+
+.create-event-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.create-event-btn:hover {
+  background-color: #0056b3;
+}
+.admin-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}

@@ -1,8 +1,19 @@
 <div class="admin-panel">
-
+  <!-- Solo añadimos el botón de Panel Usuario -->
+  <div class="admin-layout">
+    <app-admin-sidebar></app-admin-sidebar>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+      <div class="nav-buttons">
+        <button routerLink="/user/panel" class="nav-btn">Usuario</button>
+    </div>
+  
     <h1>Panel de Administrador</h1>
     <button (click)="createEvent()" class="create-event-btn">Crear Evento</button>
-    <!-- Mostrar el formulario de creación de eventos cuando showEventCreator es true -->
     <app-event-creator *ngIf="showEventCreator" (close)="hideEventCreator()" (eventCreated)="onEventCreated()"></app-event-creator>
     <app-event-list #eventList></app-event-list>
+    </div>
   </div>
+  
+
+</div>

@@ -1,0 +1,19 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+    <div class="logo">
+      <div class="toggle-btn" (click)="toggleSidebar()">
+        <i class="bi bi-list"></i>
+      </div>
+      <span class="brand-text" *ngIf="!isCollapsed">Eclipto Tickets</span>
+    </div>
+    
+    <div class="menu-items">
+      <a *ngFor="let item of menuItems" 
+         [routerLink]="item.ruta" 
+         routerLinkActive="active"
+         [title]="isCollapsed ? item.nombre : ''">
+        <i [class]="item.icono"></i>
+        <span class="menu-text" *ngIf="!isCollapsed">{{item.nombre}}</span>
+      </a>
+    </div>
+
+</div>
