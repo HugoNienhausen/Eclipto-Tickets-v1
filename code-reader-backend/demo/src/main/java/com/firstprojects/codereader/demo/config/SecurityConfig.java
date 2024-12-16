@@ -34,9 +34,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/api/v1/auth/**",
-                                "/api/v1/auth/google-login",
-                                "/api/v1/auth/register",
-                                "/api/v1/auth/authenticate"
+                                "/api/v1/auth/google-login"
                         ).permitAll()
                         .requestMatchers("/api/v1/admin/**").hasAuthority("ROLE_ADMIN")
                         .requestMatchers("/api/v1/user/**", "/api/v1/events").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")

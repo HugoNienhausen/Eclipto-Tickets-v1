@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { catchError } from 'rxjs/operators';
@@ -98,9 +98,16 @@ export class LoginComponent {
   // Login con Google
   private handleGoogleLogin(googleUser: any) {
     console.log('Enviando token a backend:', googleUser.idToken);
-    this.http.post<any>('http://localhost:8080/api/v1/auth/google-login', {
-      token: googleUser.idToken
-    }).pipe(
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    this.http.post<any>(
+      'http://localhost:8080/api/v1/auth/google-login',
+      { token: googleUser.idToken },
+      { headers: headers }
+    ).pipe(
       catchError(error => {
         console.error('Error en backend:', error);
         this.loginErrorMessage = 'Error al procesar la autenticación con Google';
