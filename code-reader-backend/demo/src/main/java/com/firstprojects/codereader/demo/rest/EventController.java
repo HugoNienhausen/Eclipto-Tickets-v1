@@ -21,7 +21,7 @@ public class EventController {
     private final JwtService jwtService;
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<?> createEvent(
             @RequestHeader("Authorization") String authHeader,
             @RequestBody Event event

@@ -24,11 +24,6 @@ public class EventService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado con ID: " + userId));
 
-        // Verificar si el usuario tiene el rol de administrador
-        if (user.getRole() != Role.ROLE_ADMIN) {
-            throw new AccessDeniedException("Solo los administradores pueden crear eventos");
-        }
-
         event.setUser(user);
         return eventRepository.save(event);
     }

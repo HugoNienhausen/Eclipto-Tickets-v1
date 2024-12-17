@@ -1,0 +1,87 @@
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #2c3e50;
+    color: #ecf0f1;
+    transition: all 0.3s ease;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .sidebar.collapsed {
+    width: 80px;
+  }
+  
+  .logo {
+    height: 60px; /* Misma altura que el upper-menu */
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: #243442;
+  }
+  
+  .toggle-btn {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .toggle-btn i {
+    font-size: 1.5rem;
+    color: #ecf0f1;
+  }
+  
+  .brand-text {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .menu-items {
+    padding: 1rem 0.5rem;
+  }
+  
+  .menu-items a {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    color: #bdc3c7;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-items a i {
+    font-size: 1.2rem;
+    min-width: 30px;
+  }
+  
+  .menu-items a .menu-text {
+    margin-left: 0.5rem;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .sidebar.collapsed .menu-text {
+    opacity: 0;
+    width: 0;
+    margin-left: 0;
+  }
+  
+  .menu-items a:hover {
+    background: #34495e;
+    color: #3498db;
+  }
+  
+  .menu-items a.active {
+    background: #3498db;
+    color: white;
+  }

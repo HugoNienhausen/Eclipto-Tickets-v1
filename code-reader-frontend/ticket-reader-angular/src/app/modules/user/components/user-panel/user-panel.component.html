@@ -1,5 +1,14 @@
-<div class="panel-container">
-    <h1>Hola, {{ username }}!</h1>
-    <h1>Todos los eventos creados</h1>
-<app-general-event-list [events]="events"></app-general-event-list>
+<div class="user-panel" [class.sidebar-collapsed]="isSidebarCollapsed">
+  <div class="user-layout">
+    <app-sidebar-menu (sidebarToggled)="onSidebarToggle($event)"></app-sidebar-menu>
+    <div class="main-content">
+      <app-upper-menu></app-upper-menu>
+      <div class="content-wrapper">
+        <h1>Panel de Usuario</h1>
+        <button (click)="createEvent()" class="create-event-btn">Crear Evento</button>
+        <app-event-creator *ngIf="showEventCreator" (close)="hideEventCreator()" (eventCreated)="onEventCreated()"></app-event-creator>
+        <app-event-list #eventList></app-event-list>
+      </div>
+    </div>
   </div>
+</div>

@@ -6,9 +6,9 @@ import { AdminPanelComponent } from '../modules/admin/components/admin-panel/adm
 import { AdminAuthGuard } from '../core/guards/admin.auth.guard';
 import { UnauthorizedComponent } from '../modules/auth/unauthorized/unauthorized.component';
 export const routes: Routes = [
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' },  // Mostra welcome a /
-  { path: 'welcome', component: WelcomeComponent },  // Mostra welcome a welcome
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: 'welcome', component: WelcomeComponent },
   { path: 'admin/panel', component: AdminPanelComponent, canActivate: [AdminAuthGuard] },
   { path: 'user/panel', component: UserPanelComponent, canActivate: [UserAuthGuard] },
-  { path: 'unauthorized', component: UnauthorizedComponent}  // Mostra el LoginComponent a /login
+  { path: 'unauthorized', component: UnauthorizedComponent }
 ];

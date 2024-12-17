@@ -1,43 +1,36 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { GeneralEventListComponent } from '../general-event-list/general-event-list.component';
-import { AuthService } from '../../../../core/services/auth.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
-
+import { NgIf } from '@angular/common';
+import { EventCreatorComponent } from '../../../admin/components/event-creator/event-creator.component';
+import { EventListComponent } from '../../../admin/components/event-list/event-list.component';
+import { RouterModule } from '@angular/router';
+import { UpperMenuComponent } from '../../../../shared/upper-menu/upper-menu/upper-menu.component';
+import { SidebarMenuComponent } from '../../../../shared/sidemenu/sidebar-menu/sidebar-menu.component';
 @Component({
-  selector: 'app-panel',
+  selector: 'app-user-panel',
   standalone: true,
+  imports: [NgIf, EventCreatorComponent, EventListComponent,  RouterModule, UpperMenuComponent, SidebarMenuComponent],
   templateUrl: './user-panel.component.html',
-  styleUrls: ['./user-panel.component.css'],
-  imports: [GeneralEventListComponent, CommonModule],
+  styleUrls: ['./user-panel.component.css']
 })
 export class UserPanelComponent {
-  username: string = '';
-  events: any[] = [];
+  showEventCreator: boolean = false;
+  isSidebarCollapsed: boolean = false;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService, 
-    private http: HttpClient,
-    private jwtHelper: JwtHelperService
-  ) {
-    this.loadUserDataFromToken();
+  createEvent() {
+    this.showEventCreator = true;
+
   }
-
-  ngOnInit() {
-    // Cargar los eventos al inicializar el componente
-    this.loadUserDataFromToken()
+  
+  hideEventCreator(){
+    this.showEventCreator = false;
   }
+  
+  @ViewChild(EventListComponent) eventList!: EventListComponent;
 
-  private loadUserDataFromToken() {
-    const token = localStorage.getItem('jwtToken');
-    if (token) {
-      const decodedToken = this.jwtHelper.decodeToken(token);
-      this.username = decodedToken.firstname || 'Usuario';
-    }
+  onEventCreated() {
+    this.eventList.loadEvents();
   }
-
-  @ViewChild(GeneralEventListComponent) eventList!: GeneralEventListComponent;
+  onSidebarToggle(collapsed: boolean) {
+    this.isSidebarCollapsed = collapsed;
+  }
 }
