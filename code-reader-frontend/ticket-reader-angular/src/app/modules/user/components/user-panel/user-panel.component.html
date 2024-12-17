@@ -2,7 +2,7 @@
   <div class="user-layout">
     <app-sidebar-menu (sidebarToggled)="onSidebarToggle($event)"></app-sidebar-menu>
     <div class="main-content">
-      <app-upper-menu></app-upper-menu>
+      <app-upper-menu [isSidebarCollapsed]="isSidebarCollapsed"></app-upper-menu>
       <div class="content-wrapper">
         <h1>Panel de Usuario</h1>
         <button (click)="createEvent()" class="create-event-btn">Crear Evento</button>

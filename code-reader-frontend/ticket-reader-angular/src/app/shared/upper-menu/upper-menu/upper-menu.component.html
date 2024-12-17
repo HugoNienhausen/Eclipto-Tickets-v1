@@ -1,13 +1,22 @@
-<nav class="upper-menu">
-    <div class="menu-content">
-      <div class="search-box">
-        <input type="text" placeholder="Search...">
+<div class="upper-menu" [class.sidebar-collapsed]="isSidebarCollapsed">
+  <div class="menu-content">
+    <div class="search-box">
+      <input type="text" placeholder="Buscar...">
+    </div>
+    <div class="profile-menu">
+      <div class="profile-icon" (click)="toggleProfileMenu()">
+        <i class="bi bi-person-circle"></i>
       </div>
-      <div class="menu-items">
-        <a href="#">En</a>
-        <a href="#">Draude Oba</a>
-        <a href="#"><i class="bi bi-bell"></i></a>
-        <a href="#"><i class="bi bi-chat"></i></a>
+      <div class="dropdown-menu" *ngIf="isProfileMenuOpen">
+        <div class="menu-item" (click)="goToProfile()">
+          <i class="bi bi-gear"></i>
+          <span>Configurar Perfil</span>
+        </div>
+        <div class="menu-item" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Cerrar Sesión</span>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</div>
