@@ -34,8 +34,8 @@ public class EventService {
         return eventRepository.findByUser(user);
     }
 
-    public Event getPublicEventDetails(String email, Long eventId) {
-        return eventRepository.findByUserEmailAndId(email, eventId)
+    public Event getPublicEventDetails(Long userId, Long eventId) {
+        return eventRepository.findByUserIdAndId(userId, eventId)
             .orElseThrow(() -> new EntityNotFoundException("Evento no encontrado"));
     }
 

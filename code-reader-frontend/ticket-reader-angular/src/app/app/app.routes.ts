@@ -12,5 +12,5 @@ export const routes: Routes = [
   { path: 'admin/panel', component: AdminPanelComponent, canActivate: [AdminAuthGuard] },
   { path: 'user/panel', component: UserPanelComponent, canActivate: [UserAuthGuard] },
   { path: 'unauthorized', component: UnauthorizedComponent },
-  { path: 'public/event/:email/:eventId', component: PublicEventComponent }
+  { path: 'public/event/:userId/:eventId', component: PublicEventComponent }
 ];

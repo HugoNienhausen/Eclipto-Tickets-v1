@@ -51,13 +51,13 @@ public class EventController {
         }
     }
 
-    @GetMapping("/public/{username}/{eventId}")
+    @GetMapping("/public/{userId}/{eventId}")
 public ResponseEntity<?> getPublicEventDetails(
-    @PathVariable String username,
+    @PathVariable Long userId,
     @PathVariable Long eventId
 ) {
     try {
-        Event event = eventService.getPublicEventDetails(username, eventId);
+        Event event = eventService.getPublicEventDetails(userId, eventId);
         return ResponseEntity.ok(event);
     } catch (Exception e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)

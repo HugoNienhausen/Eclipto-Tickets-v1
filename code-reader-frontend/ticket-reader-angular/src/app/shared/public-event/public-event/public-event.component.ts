@@ -22,14 +22,14 @@ export class PublicEventComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const email = params['email'];
+      const userId = params['userId'];
       const eventId = params['eventId'];
-      this.loadEventDetails(email, eventId);
+      this.loadEventDetails(userId, eventId);
     });
   }
 
-  loadEventDetails(email: string, eventId: string) {
-    this.http.get(`http://localhost:8080/events/public/${email}/${eventId}`)
+  loadEventDetails(userId: number, eventId: string) {
+    this.http.get(`http://localhost:8080/events/public/${userId}/${eventId}`)
       .subscribe({
         next: (event: any) => {
           this.event = event;

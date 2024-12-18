@@ -1,8 +1,19 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { jwtDecode } from 'jwt-decode';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../../core/services/auth.service';
+
+interface Event {
+  id: number;
+  name: string;
+  description: string;
+  date: string;
+  maxAttendees: number;
+  ticketPrice: number;
+  user: {
+    id: number;
+  };
+}
 
 @Component({
   selector: 'app-event-list',
@@ -12,33 +23,33 @@ import { AuthService } from '../../../../core/services/auth.service';
   styleUrl: './event-list.component.css'
 })
 export class EventListComponent implements OnInit {
-  @Input() events: any[] = [];  // Lista para almacenar eventos
+  @Input() events: Event[] = [];
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.loadEvents();  // Cargar eventos al inicializar
+    this.loadEvents();
   }
 
-  // Función para cargar eventos desde el backend
   loadEvents(): void {
     const userId = this.authService.getUserIdFromToken();
     const headers = this.authService.generateAuthHeaders();
 
     if (userId && headers) {
-      this.http.get<any[]>(`http://localhost:8080/events/user/${userId}`, { headers })
+      this.http.get<Event[]>(`http://localhost:8080/events/user/${userId}`, { headers })
         .subscribe({
           next: (data) => {
             console.log('Eventos recibidos:', data);
-            this.events = data;  // Asignar eventos obtenidos
+            this.events = data;
           },
           error: (error) => {
             console.error('Error al obtener los eventos:', error);
           }
         });
-    } else {
-      console.error('No se pudo obtener el userId del JWT o el token no está presente');
     }
   }
-  
+
+  openPublicEvent(event: Event) {
+    window.open(`/public/event/${event.user.id}/${event.id}`, '_blank');
+  }
 }
