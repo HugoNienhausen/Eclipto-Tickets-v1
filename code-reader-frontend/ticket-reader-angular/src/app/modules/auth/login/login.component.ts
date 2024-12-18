@@ -95,7 +95,7 @@ export class LoginComponent {
       });
   }
 
-  // Login con Google
+  // Login con Google actualizado
   private handleGoogleLogin(googleUser: any) {
     console.log('Enviando token a backend:', googleUser.idToken);
     
@@ -116,7 +116,24 @@ export class LoginComponent {
     ).subscribe({
       next: (response) => {
         console.log('Respuesta del backend:', response);
-        this.handleSuccessfulLogin(response);
+        if (response && response.token) {
+          localStorage.setItem('jwtToken', response.token);
+          const decodedToken: any = this.authService.decodeToken();
+          const roles: string[] = decodedToken.roles;
+          
+          if (roles.includes('ROLE_ADMIN')) {
+            this.router.navigate(['/admin/panel']).then(() => {
+              setTimeout(() => window.location.reload(), 1);
+            });
+          } else {
+            this.router.navigate(['/user/panel']).then(() => {
+              setTimeout(() => window.location.reload(), 1);
+            });
+          }
+          
+          this.loginSuccess.emit();
+          this.loginErrorMessage = '';
+        }
       },
       error: (error) => {
         console.error('Error en la respuesta:', error);
@@ -135,10 +152,14 @@ export class LoginComponent {
       if (roles.includes('ROLE_ADMIN')) {
         this.router.navigate(['/admin/panel'], { 
           state: { username: decodedToken.sub } 
+        }).then(() => {
+          setTimeout(() => window.location.reload(), 1);
         });
       } else {
         this.router.navigate(['/user/panel'], { 
           state: { username: decodedToken.sub } 
+        }).then(() => {
+          setTimeout(() => window.location.reload(), 1);
         });
       }
 
