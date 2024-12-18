@@ -1,0 +1,12 @@
+<div class="event-page" *ngIf="event">
+    <h1>{{event.name}}</h1>
+    <div class="event-details">
+      <p class="description">{{event.description}}</p>
+      <div class="info">
+        <p><strong>Fecha:</strong> {{event.date | date:'dd/MM/yyyy'}}</p>
+        <p><strong>Precio:</strong> {{event.ticketPrice | currency:'EUR'}}</p>
+        <p><strong>Capacidad:</strong> {{event.maxAttendees}} personas</p>
+        <p><strong>Organizador:</strong> {{event.user?.firstname}} {{event.user?.lastname}}</p>
+      </div>
+    </div>
+  </div>

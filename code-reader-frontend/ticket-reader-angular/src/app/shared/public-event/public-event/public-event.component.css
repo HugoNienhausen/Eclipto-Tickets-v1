@@ -1,0 +1,18 @@
+.event-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  .event-details {
+    margin-top: 20px;
+  }
+  .description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .info {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+  }
