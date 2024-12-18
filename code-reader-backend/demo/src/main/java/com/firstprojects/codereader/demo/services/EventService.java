@@ -34,6 +34,11 @@ public class EventService {
         return eventRepository.findByUser(user);
     }
 
+    public Event getPublicEventDetails(String email, Long eventId) {
+        return eventRepository.findByUserEmailAndId(email, eventId)
+            .orElseThrow(() -> new EntityNotFoundException("Evento no encontrado"));
+    }
+
     public List<Event> findAllEvents() {
         return eventRepository.findAll();  // Asumiendo que tienes una función en el repositorio para obtener todos los eventos
     }

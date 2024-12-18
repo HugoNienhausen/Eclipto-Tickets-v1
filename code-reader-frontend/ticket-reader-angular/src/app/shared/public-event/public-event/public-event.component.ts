@@ -3,16 +3,17 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
-
+import { TicketBuyComponent } from '../../../modules/user/components/ticket-buy/ticket-buy.component';
 @Component({
   selector: 'app-public-event',
   standalone: true,
-  imports: [CommonModule, DatePipe],
+  imports: [CommonModule, DatePipe, TicketBuyComponent],
   templateUrl: './public-event.component.html',
   styleUrl: './public-event.component.css'
 })
 export class PublicEventComponent implements OnInit {
   event: any;
+  showTicketBuy: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,5 +38,8 @@ export class PublicEventComponent implements OnInit {
           console.error('Error loading event:', error);
         }
       });
+  }
+  openTicketBuy() {
+    this.showTicketBuy = true;
   }
 }

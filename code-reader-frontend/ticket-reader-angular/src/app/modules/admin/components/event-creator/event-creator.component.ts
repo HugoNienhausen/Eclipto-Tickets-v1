@@ -3,8 +3,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';  // Importar HttpClientModule
 import { jwtDecode } from 'jwt-decode';
 import { AuthService } from '../../../../core/services/auth.service';
-
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-event-creator',
   standalone: true,
@@ -18,7 +17,7 @@ export class EventCreatorComponent {
   @Output() close = new EventEmitter<void>();
 
 
-  constructor(private http: HttpClient, private authService: AuthService){}
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router){}
 
 
   onSubmit(form: NgForm) {
@@ -42,7 +41,10 @@ export class EventCreatorComponent {
               console.log('Evento creado exitosamente', response);
               this.eventCreated.emit();  // Emitir evento cuando se cree el evento
               this.closeEventCreator();  // Cerrar el creador de eventos
-            },
+            // Redirigir a la página pública del evento
+            const username = this.authService.getUsernameFromToken();
+            this.router.navigate(['/public/event', username, (response as any).id]);
+          },
             error: (error) => {
               console.error('Error al crear el evento:', error);
               if (error instanceof HttpErrorResponse) {

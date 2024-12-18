@@ -37,6 +37,19 @@ export class AuthService {
     }
     return null;
   }
+  
+  getUsernameFromToken(): string | null {
+    try {
+      const token = this.getToken();
+      if (token) {
+        const decodedToken: any = jwtDecode(token);
+        return decodedToken.sub; // Asumiendo que el username está en el campo 'sub'
+      }
+    } catch (error) {
+      console.error('Error al decodificar el token:', error);
+    }
+    return null;
+  }
 
   // Validar si el token ha expirado
   isTokenExpired(): boolean {

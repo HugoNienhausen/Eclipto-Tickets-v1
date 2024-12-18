@@ -8,7 +8,7 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class TicketService {
   
-  private apiUrl = 'http://localhost:8080/tickets';
+  private apiUrl = 'http://localhost:8080/public/tickets';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
   

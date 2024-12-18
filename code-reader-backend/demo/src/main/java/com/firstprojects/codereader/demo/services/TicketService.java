@@ -22,7 +22,7 @@ public class TicketService {
     private EmailService emailService;
 
     @Transactional
-    public Ticket createTicket(Long eventId, String buyerName, String buyerSurname, String buyerEmail) {
+    public Ticket createTicket(Long eventId, String buyerName, String buyerSurname, String buyerEmail) throws Exception {
         // Buscar el evento
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new IllegalArgumentException("Evento no encontrado"));
@@ -40,7 +40,7 @@ public class TicketService {
         event.reduceAvailableSeats(1);
         eventRepository.save(event);  // Guardar el evento con el nuevo valor de availableSeats
 
-        emailService.sendTicketEmail(buyerEmail, savedTicket.getId().toString(), eventId);
+        emailService.sendTicketEmail(buyerEmail, savedTicket.getId().toString(), event.getName(), event.getDescription(), event.getDate().toString());
 
         return savedTicket;
     }

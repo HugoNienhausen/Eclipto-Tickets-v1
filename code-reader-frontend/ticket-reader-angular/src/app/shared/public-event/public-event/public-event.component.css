@@ -16,3 +16,18 @@
     padding: 20px;
     border-radius: 8px;
   }
+  .buy-ticket-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .buy-ticket-btn:hover {
+    background-color: #45a049;
+  }

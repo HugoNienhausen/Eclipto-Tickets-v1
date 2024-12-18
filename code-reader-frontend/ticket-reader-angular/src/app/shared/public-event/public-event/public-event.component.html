@@ -8,5 +8,12 @@
         <p><strong>Capacidad:</strong> {{event.maxAttendees}} personas</p>
         <p><strong>Organizador:</strong> {{event.user?.firstname}} {{event.user?.lastname}}</p>
       </div>
+      <button class="buy-ticket-btn" (click)="openTicketBuy()">Comprar Entrada</button>
     </div>
   </div>
+
+  <app-ticket-buy 
+  *ngIf="showTicketBuy" 
+  [event]="event" 
+  (close)="showTicketBuy = false">
+</app-ticket-buy>

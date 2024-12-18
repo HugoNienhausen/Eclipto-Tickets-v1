@@ -14,7 +14,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/tickets")
+@RequestMapping("/public/tickets")
 public class TicketController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class TicketController {
     public ResponseEntity<List<Ticket>> createTickets(@RequestBody TicketRequest ticketRequest) {
         int ticketQuantity = ticketRequest.getTicketQuantity();
         List<Ticket> tickets = new ArrayList<>();
-
+try{
         for (int i = 0; i < ticketQuantity; i++) {
             Ticket ticket = ticketService.createTicket(
                     ticketRequest.getEventId(),
@@ -36,7 +36,14 @@ public class TicketController {
         }
 
         return ResponseEntity.ok(tickets); // Retorna la lista de tickets creados
-    }
+}catch(Exception e){
+    System.out.println("Error en la creación de tickets" + e.getMessage());
+    e.printStackTrace();
+    return ResponseEntity.badRequest().body(null);
+
+}
+}
+
 }
 
 

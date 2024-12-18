@@ -50,6 +50,21 @@ public class EventController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+    @GetMapping("/public/{username}/{eventId}")
+public ResponseEntity<?> getPublicEventDetails(
+    @PathVariable String username,
+    @PathVariable Long eventId
+) {
+    try {
+        Event event = eventService.getPublicEventDetails(username, eventId);
+        return ResponseEntity.ok(event);
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Evento no encontrado: " + e.getMessage());
+    }
+}
+
     @GetMapping("/users")
     public ResponseEntity<List<Event>> getAllEvents() {
         List<Event> events = eventService.findAllEvents();
