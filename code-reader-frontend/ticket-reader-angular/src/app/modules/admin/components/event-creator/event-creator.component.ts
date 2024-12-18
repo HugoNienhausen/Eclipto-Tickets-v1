@@ -41,9 +41,8 @@ export class EventCreatorComponent {
               console.log('Evento creado exitosamente', response);
               this.eventCreated.emit();  // Emitir evento cuando se cree el evento
               this.closeEventCreator();  // Cerrar el creador de eventos
+              form.reset();
             // Redirigir a la página pública del evento
-            const username = this.authService.getUsernameFromToken();
-            this.router.navigate(['/public/event', username, (response as any).id]);
           },
             error: (error) => {
               console.error('Error al crear el evento:', error);

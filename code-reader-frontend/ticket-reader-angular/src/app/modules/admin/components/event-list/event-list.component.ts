@@ -10,9 +10,7 @@ interface Event {
   date: string;
   maxAttendees: number;
   ticketPrice: number;
-  user: {
-    id: number;
-  };
+  userId: number;  // Cambiamos user.id por userId
 }
 
 @Component({
@@ -50,6 +48,10 @@ export class EventListComponent implements OnInit {
   }
 
   openPublicEvent(event: Event) {
-    window.open(`/public/event/${event.user.id}/${event.id}`, '_blank');
+    console.log('Evento:', event);  // Para debug
+    const userId = this.authService.getUserIdFromToken();  // Usamos el ID del usuario actual
+    if (userId) {
+      window.open(`/public/event/${userId}/${event.id}`, '_blank');
+    }
   }
 }

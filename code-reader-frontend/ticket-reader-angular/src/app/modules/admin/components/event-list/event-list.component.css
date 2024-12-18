@@ -27,3 +27,23 @@
     margin: 8px 0;
     color: #666;
   }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .preview-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+  }
+  
+  .preview-button:hover {
+    background-color: #f0f0f0;
+  }
