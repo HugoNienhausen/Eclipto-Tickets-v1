@@ -4,10 +4,10 @@
   right: 0;
   left: 250px; 
   height: 60px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: var(--card-background);
+  box-shadow: 0 2px 4px var(--shadow-color);
   z-index: 1000;
-  transition: left 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .upper-menu.sidebar-collapsed {
@@ -18,86 +18,165 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 1.25rem;
   height: 100%;
 }
 
+/* Caja de búsqueda */
 .search-box input {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
   width: 200px;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
-/* Estilos para el menú de perfil */
+.search-box input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.search-box input::placeholder {
+  color: var(--text-light);
+}
+
+/* Menú de perfil */
 .profile-menu {
   position: relative;
 }
 
 .profile-icon {
   cursor: pointer;
-  padding: 8px;
+  padding: 0.5rem;
   border-radius: 50%;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-icon:hover {
-  background-color: #f0f0f0;
+  background-color: var(--hover-background);
 }
 
 .profile-icon i {
-  font-size: 24px;
-  color: #333;
+  font-size: 1.5rem;
+  color: var(--text-primary);
 }
 
+/* Menú desplegable */
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 0.5rem);
   right: 0;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background-color: var(--card-background);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px var(--shadow-color),
+              0 2px 4px -1px var(--shadow-color);
   min-width: 200px;
-  padding: 8px 0;
-  margin-top: 8px;
+  padding: 0.5rem 0;
+  animation: fadeIn 0.2s ease-out;
 }
 
 .menu-item {
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
 }
 
 .menu-item:hover {
-  background-color: #f5f5f5;
+  background-color: var(--hover-background);
+  color: var(--primary-color);
 }
 
 .menu-item i {
-  margin-right: 12px;
-  font-size: 16px;
-  color: #666;
+  margin-right: 0.75rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover i {
+  color: var(--primary-color);
 }
 
 .menu-item span {
-  color: #333;
-  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
-/* Mantener los estilos existentes del menú */
-.menu-items {
-  display: flex;
-  gap: 20px;
-  align-items: center;
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.menu-items a {
-  color: #666;
-  text-decoration: none;
-  font-size: 14px;
+/* Responsive */
+@media (max-width: 768px) {
+  .upper-menu {
+    left: 80px;
+    padding: 0 0.5rem;
+  }
+
+  .search-box input {
+    width: 150px;
+  }
+
+  .menu-content {
+    padding: 0 0.75rem;
+  }
 }
 
-.menu-items a:hover {
-  color: #333;
+@media (max-width: 480px) {
+  .search-box {
+    display: none; /* Ocultar búsqueda en móviles */
+  }
+
+  .upper-menu {
+    left: 0;
+  }
+
+  .dropdown-menu {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    left: 0;
+    border-radius: 0;
+    width: 100%;
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+  }
+
+  .menu-item {
+    padding: 1rem;
+  }
+}
+
+/* Mejoras de accesibilidad */
+.profile-icon:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.menu-item:focus {
+  outline: none;
+  background-color: var(--hover-background);
+}
+
+/* Soporte para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .upper-menu {
+    background-color: var(--card-background);
+  }
 }

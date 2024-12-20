@@ -1,3 +1,47 @@
 body {
     font-family: 'Roboto', sans-serif;
   }
+  .animate__animated {
+    animation-duration: 0.3s;
+  }
+  .animate__fadeIn {
+    animation-name: fadeIn;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  :root {
+    /* Colores principales más suaves */
+    --primary-color: #4f46e5;      /* Indigo más suave */
+    --primary-hover: #4338ca;      /* Indigo hover más suave */
+    --primary-light: #eef2ff;      /* Fondo muy suave para hover */
+    
+    /* Colores de fondo */
+    --background-color: #f8fafc;   /* Gris muy claro para fondo */
+    --card-background: #ffffff;    /* Blanco para tarjetas */
+    
+    /* Colores de texto */
+    --text-primary: #1e293b;       /* Azul oscuro casi negro para texto principal */
+    --text-secondary: #64748b;     /* Gris medio para texto secundario */
+    --text-light: #94a3b8;        /* Gris claro para texto terciario */
+    
+    /* Colores de borde y sombras */
+    --border-color: #e2e8f0;       /* Gris muy claro para bordes */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    /* Colores de estado */
+    --error-color: #ef4444;        /* Rojo */
+    --success-color: #10b981;      /* Verde */
+    --warning-color: #f59e0b;      /* Amarillo */
+    
+    /* Colores de hover y focus */
+    --hover-background: #f1f5f9;   /* Gris muy claro para hover */
+    --focus-ring: rgba(79, 70, 229, 0.2); /* Color para focus ring */
+  }

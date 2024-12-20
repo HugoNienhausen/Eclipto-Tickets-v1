@@ -1,152 +1,115 @@
-.welcome-container {
-    text-align: center;
-    margin-top: 50px;
-  }
-  
-  .button-container {
-    margin: 20px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .card {
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    width: 300px;
-    text-align: left;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:disabled {
-    background-color: grey;
-  }
-  
-  .error {
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  p {
-    margin: 5px 0;
-  }
-
-  /* Contenedor del checkbox para que quede a la derecha */
-.admin-checkbox {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 10px;
+/* Estilos de botones */
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
 }
 
-/* Estilo del checkbox */
-.styled-checkbox {
-  width: 20px;
-  height: 20px;
-  margin-left: 10px;
-  accent-color: #4CAF50; /* Color personalizado para el checkbox */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
 }
 
-/* Estilo del texto del checkbox */
-.admin-checkbox label {
-  font-size: 14px;
-  margin-right: 10px;
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-1px);
 }
 
-  .checkbox-wrapper-2 .ikxBAC {
-    appearance: none;
-    background-color: #dfe1e4;
-    border-radius: 72px;
-    border-style: none;
-    flex-shrink: 0;
-    height: 20px;
-    margin: 0;
-    position: relative;
-    width: 30px;
-  }
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-color: transparent;
+}
 
-  .checkbox-wrapper-2 .ikxBAC::before {
-    bottom: -6px;
-    content: "";
-    left: -6px;
-    position: absolute;
-    right: -6px;
-    top: -6px;
-  }
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-1px);
+}
 
-  .checkbox-wrapper-2 .ikxBAC,
-  .checkbox-wrapper-2 .ikxBAC::after {
-    transition: all 100ms ease-out;
-  }
+/* Estilos de tarjeta */
+.card {
+  border: none;
+  background-color: var(--card-background);
+  box-shadow: 0 2px 15px -3px rgba(0,0,0,0.07),
+              0 10px 20px -2px rgba(0,0,0,0.04);
+}
 
-  .checkbox-wrapper-2 .ikxBAC::after {
-    background-color: #fff;
-    border-radius: 50%;
-    content: "";
-    height: 14px;
-    left: 3px;
-    position: absolute;
-    top: 3px;
-    width: 14px;
-  }
+/* Estilos de texto */
+.ls-tight {
+  letter-spacing: -0.025em;
+}
 
-  .checkbox-wrapper-2 input[type=checkbox] {
-    cursor: default;
-  }
+.display-3 {
+  font-weight: 800;
+  color: var(--text-primary);
+}
 
-  .checkbox-wrapper-2 .ikxBAC:hover {
-    background-color: #c9cbcd;
-    transition-duration: 0s;
-  }
+.text-primary {
+  color: var(--primary-color) !important;
+}
 
-  .checkbox-wrapper-2 .ikxBAC:checked {
-    background-color: #6e79d6;
-  }
+.text-muted {
+  color: var(--text-secondary) !important;
+}
 
-  .checkbox-wrapper-2 .ikxBAC:checked::after {
-    background-color: #fff;
-    left: 13px;
-  }
+hr {
+  opacity: 0.15;
+  border-color: var(--border-color);
+}
 
-  .checkbox-wrapper-2 :focus:not(.focus-visible) {
-    outline: 0;
+/* Animaciones para los formularios */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-20px); 
   }
-
-  .checkbox-wrapper-2 .ikxBAC:checked:hover {
-    background-color: #535db3;
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
   }
+}
 
+app-login, app-register {
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .text-lg-start {
+    text-align: center !important;
+  }
+  
+  .btn-lg {
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Hover effects */
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Estilos adicionales para mejorar la apariencia */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1),
+              0 8px 10px -6px rgba(0,0,0,0.1) !important;
+}
+
+/* Mejoras en la accesibilidad */
+.btn:focus {
+  box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+  outline: none;
+}

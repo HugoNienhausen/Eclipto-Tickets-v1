@@ -1,94 +1,71 @@
 /* General */
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #f5f5f5;
+  background-color: var(--background-color);
 }
 
 h3 {
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--text-primary);
   text-align: center;
 }
 
-/* Contenedor de la tarjeta */
-.card {
-  margin: 20px auto;
-  padding: 20px 20px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  width: 90%; 
-  max-width: 400px;
-  text-align: left;
-  background-color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
+/* Formulario */
+.form-floating {
+  position: relative;
+  margin-bottom: 1rem;
 }
 
-/* Grupos de formulario */
-.form-group {
-  margin-bottom: 20px;
-}
-
-/* Etiquetas de formulario */
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: #555;
-}
-
-/* Inputs */
-input {
+.form-control {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #fafafa;
-  transition: border-color 0.3s ease-in-out;
-  box-sizing: border-box;
+  padding: 1rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--card-background);
+  transition: all 0.3s ease;
 }
 
-input:focus {
+.form-control:focus {
   outline: none;
-  border-color: #80bdff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
 }
 
-/* Botón de enviar */
-button {
+/* Botones */
+.btn {
   width: 100%;
-  padding: 12px;
-  background-color: #28a745;
-  color: white;
+  padding: 0.75rem;
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 0.5rem;
   font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease;
 }
 
-button:hover {
-  background-color: #218838;
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
 }
 
-button:disabled {
-  background-color: #6c757d;
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
 }
 
 /* Mensajes de error */
-.error {
-  color: #dc3545;
-  font-size: 0.9rem;
-  margin-top: 10px;
-  text-align: center;
-}
-
-/* Espaciado en los párrafos */
-p {
-  margin: 5px 0;
+.alert-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--error-color);
+  color: var(--error-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 /* Separador */
@@ -96,99 +73,79 @@ p {
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 20px 0;
+  margin: 1.5rem 0;
 }
 
 .separator::before,
 .separator::after {
   content: '';
   flex: 1;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .separator span {
-  padding: 0 10px;
-  color: #666;
-  font-size: 0.9rem;
+  padding: 0 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
 }
 
-/* Contenedor del botón de Google */
+/* Google Sign In */
 .google-btn-container {
-  margin-top: 10px;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-/* Estilos específicos para el botón de Google */
-asl-google-signin-button {
-  display: block;
-  width: 100%;
-}
-
-asl-google-signin-button > div {
-  margin: 0 auto;
-}
-
-@media (max-width: 600px) {
-  .card {
-      width: 100%;
-      padding: 15px;
-      margin: 10px auto;
-  }
-
-  input {
-      width: 100%;
-  }
-
-  button {
-      padding: 10px;
-  }
-
-  .google-btn-container {
-      margin-top: 15px;
-  }
-
-  .separator {
-      margin: 15px 0;
-  }
+.g_id_signin {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
 }
 
 /* Animaciones */
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: translateY(-10px);
+    opacity: 0;
+    transform: translateY(-10px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.card {
+.form-container {
   animation: fadeIn 0.3s ease-out;
 }
 
-.google-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  cursor: pointer;
-  margin: 10px 0;
-  width: 100%;
+/* Responsive */
+@media (max-width: 600px) {
+  .btn {
+    padding: 0.625rem;
+  }
+
+  .form-control {
+    padding: 0.875rem 0.75rem;
+  }
+
+  .separator {
+    margin: 1rem 0;
+  }
 }
 
-.google-btn img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+/* Mejoras de accesibilidad */
+.btn:focus,
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
 }
 
-.google-btn:hover {
-  background-color: #f5f5f5;
+/* Hover states */
+.form-control:hover {
+  border-color: var(--primary-color);
+}
+
+.btn:active {
+  transform: translateY(1px);
 }

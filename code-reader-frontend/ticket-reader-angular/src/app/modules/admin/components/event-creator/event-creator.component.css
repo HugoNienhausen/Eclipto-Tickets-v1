@@ -1,90 +1,178 @@
-/* Fondo oscuro o borroso */
+/* Overlay con animación */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
-  backdrop-filter: blur(5px); /* Fondo borroso */
-  z-index: 999; /* Colocar el fondo por encima del contenido */
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
 }
 
-/* Tarjeta centrada */
+/* Tarjeta del creador de eventos */
 .event-creator-card {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
-  max-width: 400px;
-  background-color: white;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Colocar la tarjeta por encima del fondo oscuro */
+  max-width: 500px;
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px var(--shadow-color),
+              0 10px 10px -5px var(--shadow-color);
+  z-index: 1000;
+  animation: slideUp 0.3s ease;
 }
 
+/* Encabezado */
 .card-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.card-header h2 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
 }
 
 .close-btn {
-  cursor: pointer;
-  font-size: 20px;
-  color: #f00;
-}
-
-.card-body {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  background-color: var(--background-color);
+  border: none;
+  transition: all 0.3s ease;
 }
 
-.event-creator-card h2 {
-  text-align: center;
-  margin-bottom: 20px;
+.close-btn:hover {
+  background-color: var(--hover-background);
+  color: var(--error-color);
+  transform: rotate(90deg);
 }
 
-button {
-  margin-top: 20px;
-}
-
+/* Formulario */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--focus-ring);
 }
 
 .form-group textarea {
-  resize: none;
+  resize: vertical;
+  min-height: 100px;
 }
 
+/* Botón de envío */
 .submit-btn {
-  display: block;
   width: 100%;
-  padding: 10px;
-  background-color: #28a745;
+  padding: 0.875rem;
+  background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.submit-btn:hover {
-  background-color: #218838;
+.submit-btn:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .event-creator-card {
+    width: 95%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-creator-card {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: none;
+    left: 0;
+    border-radius: 0;
+    padding: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Validación de formulario */
+.form-group input.ng-invalid.ng-touched,
+.form-group textarea.ng-invalid.ng-touched {
+  border-color: var(--error-color);
+}
+
+.validation-error {
+  color: var(--error-color);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
 }

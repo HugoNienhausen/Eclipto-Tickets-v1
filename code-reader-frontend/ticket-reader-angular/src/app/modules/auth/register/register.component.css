@@ -1,156 +1,178 @@
 /* General */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f5f5f5; /* Color de fondo suave */
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+}
+
+/* Formulario */
+.form-floating {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--card-background);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+}
+
+.form-control:hover {
+  border-color: var(--primary-color);
+}
+
+/* Botones */
+.btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Mensajes y validaciones */
+.alert {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.alert-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--error-color);
+  color: var(--error-color);
+}
+
+.alert-success {
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid var(--success-color);
+  color: var(--success-color);
+}
+
+/* Checkbox personalizado */
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form-check-input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-check-input:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.form-check-label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Validación de contraseña */
+.small {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.text-success {
+  color: var(--success-color);
+}
+
+.text-danger {
+  color: var(--error-color);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 20px;
-    color: #333;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Contenedor de la tarjeta */
-  .card {
-    margin: 20px auto;
-    padding: 20px 20px; /* Añadir padding uniforme arriba, abajo, izquierda y derecha */
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    width: 90%; 
-    max-width: 400px;
-    text-align: left;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-size: 1rem;
+}
+
+.form-container {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-control {
+    padding: 0.625rem;
   }
-  
-  /* Grupos de formulario */
-  .form-group {
-    margin-bottom: 20px;
+
+  .btn {
+    padding: 0.625rem;
   }
-  
-  /* Etiquetas de formulario */
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #555;
+
+  .form-check-input {
+    width: 1rem;
+    height: 1rem;
   }
-  
-  /* Inputs */
-  input {
-    width: calc(100% - 20px); /* Ajusta el ancho a 100% con un margen interno de 10px a cada lado */
-    padding: 12px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #fafafa;
-    transition: border-color 0.3s ease-in-out;
-    box-sizing: border-box; /* Asegura que el padding y border no desborden el contenedor */
+}
+
+/* Grid para nombre y apellidos */
+.row {
+  display: flex;
+  margin: -0.5rem;
+  flex-wrap: wrap;
+}
+
+.col-md-6 {
+  padding: 0.5rem;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+@media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
-  
-  input:focus {
-    outline: none;
-    border-color: #80bdff;
-  }
-  
-  /* Botón de enviar */
-  button {
-    width: 100%;  /* El botón ahora ocupa todo el ancho del contenedor */
-    padding: 12px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
-  
-  button:disabled {
-    background-color: #6c757d;
-  }
-  
-  /* Mensajes de error */
-  .error {
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  /* Espaciado en los párrafos */
-  p {
-    margin: 5px 0;
-  }
-  
-  /* Estilo para el checkbox y su contenedor */
-  .checkbox-wrapper-2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .checkbox-wrapper-2 label {
-    font-size: 14px;
-    margin-right: 10px;
-  }
-  
-  /* Checkbox */
-  .checkbox-wrapper-2 .ikxBAC {
-    appearance: none;
-    background-color: #dfe1e4;
-    border-radius: 50px;
-    width: 40px;
-    height: 20px;
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .checkbox-wrapper-2 .ikxBAC::after {
-    content: "";
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background-color: #fff;
-    top: 3px;
-    left: 3px;
-    transition: left 0.3s ease;
-  }
-  
-  .checkbox-wrapper-2 .ikxBAC:checked {
-    background-color: #4CAF50;
-  }
-  
-  .checkbox-wrapper-2 .ikxBAC:checked::after {
-    left: 23px;
-  }
-  
-  /* Espaciado adicional en el checkbox */
-  .checkbox-wrapper-2 {
-    margin-bottom: 20px;
-  }
-  
-  @media (max-width: 600px) {
-    .card {
-      width: 100%; /* La tarjeta ahora se ajustará a todo el ancho en pantallas pequeñas */
-      padding: 15px;
-    }
-  
-    input {
-      width: calc(100% - 20px); /* Asegurar que los inputs tengan suficiente margen en los laterales */
-    }
-  
-    button {
-      padding: 10px;
-    }
-  }
+}

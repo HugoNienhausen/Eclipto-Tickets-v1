@@ -1,14 +1,59 @@
-<div class="welcome-container">
-  <h2>Lector de Tickets</h2>
+<section class="vh-100" style="background-color: hsl(0, 0%, 96%)">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card shadow-lg" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp" 
+     alt="Login template" class="img-fluid h-100" 
+     style="border-radius: 1rem 0 0 1rem; object-fit: cover;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5">
+                
+                <!-- Contenido inicial -->
+                <div *ngIf="!showLoginForm && !showRegisterForm" class="text-center">
+                  <h2 class="fw-bold mb-4">Bienvenido a Eclipto Manager</h2>
+                  <p class="text-muted mb-4">Gestiona tus eventos y actividades de manera fácil y segura</p>
+                  
+                  <div class="d-grid gap-3">
+                    <button class="btn btn-primary btn-lg" (click)="showLogin()">
+                      <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
+                    </button>
+                    <button class="btn btn-outline-primary btn-lg" (click)="showRegister()">
+                      <i class="fas fa-user-plus me-2"></i>Registrarse
+                    </button>
+                  </div>
+                </div>
 
-  <div class="button-container">
-    <button (click)="toggleForms('login')">Iniciar Sesión</button>
-    <button (click)="toggleForms('register')">Registrarse</button>
+                <!-- Componente Login -->
+                <div *ngIf="showLoginForm" class="animate__animated animate__fadeIn">
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold mb-0">Iniciar Sesión</h2>
+                    <button class="btn btn-link" (click)="showLoginForm = false">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                  <app-login (loginSuccess)="onLoginSuccess()"></app-login>
+                </div>
+
+                <!-- Componente Register -->
+                <div *ngIf="showRegisterForm" class="animate__animated animate__fadeIn">
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold mb-0">Registrarse</h2>
+                    <button class="btn btn-link" (click)="showRegisterForm = false">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                  <app-register (registerSuccess)="onRegisterSuccess()"></app-register>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <!-- Componente de Login -->
-  <app-login *ngIf="showLoginForm" (loginSuccess)="onLoginSuccess()"></app-login>
-
-  <!-- Componente de Registro -->
-  <app-register *ngIf="showRegisterForm" (registerSuccess)="onRegisterSuccess()"></app-register>
-</div>
+</section>
