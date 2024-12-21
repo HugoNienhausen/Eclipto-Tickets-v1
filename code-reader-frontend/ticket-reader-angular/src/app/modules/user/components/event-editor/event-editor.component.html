@@ -1,0 +1,100 @@
+<div class="event-editor-card">
+  <div class="card-header">
+    <h2>Editar Evento</h2>
+    <button class="close-btn" (click)="close.emit()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  
+  <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)">
+    <div class="form-group image-upload">
+      <label for="eventImage">Imagen del evento</label>
+      <div class="image-preview" [class.has-image]="imagePreview">
+        <img *ngIf="imagePreview" [src]="imagePreview" alt="Vista previa">
+        <div class="upload-placeholder" *ngIf="!imagePreview">
+          <i class="bi bi-image"></i>
+          <span>Haz clic o arrastra una imagen</span>
+        </div>
+        <input 
+          type="file" 
+          id="eventImage" 
+          (change)="onImageSelected($event)"
+          accept="image/*"
+          #fileInput
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="eventName">Nombre del evento</label>
+      <input 
+        type="text" 
+        id="eventName" 
+        name="eventName" 
+        [(ngModel)]="event.name"
+        required 
+        minlength="3"
+        placeholder="Nombre del evento"
+      />
+      <div class="validation-error" *ngIf="eventForm.form.get('eventName')?.invalid && eventForm.form.get('eventName')?.touched">
+        El nombre es requerido y debe tener al menos 3 caracteres
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="eventDescription">Descripción</label>
+      <textarea 
+        id="eventDescription" 
+        name="eventDescription" 
+        [(ngModel)]="event.description"
+        required
+        placeholder="Describe tu evento"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="eventDate">Fecha</label>
+      <input 
+        type="date" 
+        id="eventDate" 
+        name="eventDate"
+        [(ngModel)]="event.date"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="maxAttendees">Número máximo de asistentes</label>
+      <input 
+        type="number" 
+        id="maxAttendees" 
+        name="maxAttendees"
+        [(ngModel)]="event.maxAttendees"
+        required
+        min="1"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="ticketPrice">Precio por entrada</label>
+      <input 
+        type="number" 
+        id="ticketPrice" 
+        name="ticketPrice"
+        [(ngModel)]="event.ticketPrice"
+        required
+        min="0"
+        step="0.01"
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="submit-btn" [disabled]="!eventForm.valid">
+        Guardar cambios
+      </button>
+      <button type="button" class="cancel-btn" (click)="close.emit()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
