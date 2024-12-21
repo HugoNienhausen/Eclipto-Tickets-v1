@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { TicketBuyComponent } from '../../../modules/user/components/ticket-buy/ticket-buy.component';
+import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-public-event',
   standalone: true,
@@ -38,6 +39,18 @@ export class PublicEventComponent implements OnInit {
           console.error('Error loading event:', error);
         }
       });
+  }
+  getImageUrl(event: any): string {
+    if (event?.imageUrl) {
+      // Si la URL ya comienza con http o https, devolver la URL tal cual
+      if (event.imageUrl.startsWith('http')) {
+        return event.imageUrl;
+      }
+      // Si no, añadir la URL base de la API
+      return `${environment.apiUrl}${event.imageUrl}`;
+    }
+    // URL de imagen por defecto si no hay imagen
+    return 'assets/images/default-event.jpg';
   }
   openTicketBuy() {
     this.showTicketBuy = true;

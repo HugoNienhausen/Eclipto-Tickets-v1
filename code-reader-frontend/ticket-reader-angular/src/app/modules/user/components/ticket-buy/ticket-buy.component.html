@@ -1,37 +1,79 @@
-<div class="modal-overlay" (click)="close.emit()"></div> <!-- Fondo oscuro o borroso -->
 <div class="ticket-buy-card">
   <div class="card-header">
-    <span class="close-btn" (click)="close.emit()">✖</span>
+    <h2>Comprar Entrada</h2>
+    <button class="close-btn" (click)="close.emit()">
+      <i class="bi bi-x-lg"></i>
+    </button>
   </div>
-  <div class="card-body">  
-    <h2>Comprar entrada para {{ event.name }}</h2>
-    <p>{{ event.description }}</p>
-    
-    <form>
-      <div class="form-group">
-        <label for="buyerName">Nombre del comprador</label>
-        <input type="text" id="buyerName" name="buyerName" [(ngModel)]="buyerName" placeholder="Nombre" required />
-      </div>
 
-      <div class="form-group">
-        <label for="buyerSurname">Apellidos del comprador</label>
-        <input type="text" id="buyerSurname" name="buyerSurname" [(ngModel)]="buyerSurname" placeholder="Apellidos" required />
-      </div>
-
-      <div class="form-group">
-        <label for="buyerSurname">Email</label>
-        <input type="text" id="buyerEmail" name="buyerEmail" [(ngModel)]="buyerEmail" placeholder="Apellidos" required />
-      </div>
-
-      <div class="form-group">
-        <label for="ticketQuantity">Cantidad de entradas</label>
-        <div class="quantity-control">
-          <input type="number" name="ticketQuantity" [(ngModel)]="ticketQuantity" id="ticketQuantity" value= 1 min="1" />
-        </div>
-      </div>
-
-      <button type="button" class="submit-btn" (click)="completePurchase()">Confirmar compra</button>
-      <button type="button" class="cancel-btn" (click)="close.emit()">Cancelar</button>
-    </form>
+  <div class="event-info">
+    <p><strong>Evento:</strong> {{event.name}}</p>
+    <p><strong>Fecha:</strong> {{event.date | date:'dd/MM/yyyy'}}</p>
+    <p><strong>Precio por entrada:</strong> {{event.ticketPrice | currency:'EUR'}}</p>
+    <p><strong>Entradas disponibles:</strong> {{event.availableSeats}}</p>
   </div>
+
+  <form #ticketForm="ngForm" (ngSubmit)="onSubmit(ticketForm)">
+    <div class="form-group">
+      <label for="buyerName">Nombre</label>
+      <input 
+        type="text" 
+        id="buyerName" 
+        name="buyerName"
+        [(ngModel)]="buyerName"
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="buyerSurname">Apellidos</label>
+      <input 
+        type="text" 
+        id="buyerSurname" 
+        name="buyerSurname"
+        [(ngModel)]="buyerSurname"
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="buyerEmail">Email</label>
+      <input 
+        type="email" 
+        id="buyerEmail" 
+        name="buyerEmail"
+        [(ngModel)]="buyerEmail"
+        required
+        email
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="ticketQuantity">Cantidad de entradas</label>
+      <input 
+        type="number" 
+        id="ticketQuantity" 
+        name="ticketQuantity"
+        [(ngModel)]="ticketQuantity"
+        required
+        min="1"
+        [max]="event.availableSeats"
+      >
+    </div>
+
+    <div class="total-section">
+      <div class="total-price">
+        Total: {{calculateTotal() | currency:'EUR'}}
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="submit-btn" [disabled]="!ticketForm.valid">
+        Confirmar Compra
+      </button>
+      <button type="button" class="cancel-btn" (click)="close.emit()">
+        Cancelar
+      </button>
+    </div>
+  </form>
 </div>
