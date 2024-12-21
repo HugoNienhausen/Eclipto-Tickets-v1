@@ -3,13 +3,17 @@
     <app-sidebar-menu (sidebarToggled)="onSidebarToggle($event)"></app-sidebar-menu>
     <div class="main-content">
       <app-upper-menu [isSidebarCollapsed]="isSidebarCollapsed"></app-upper-menu>
-      <div class="content-wrapper">
+      <div class="content-wrapper" [class.blur]="showEventCreator">
         <button (click)="createEvent()" class="create-event-btn">
           <i class="bi bi-plus-lg"></i>
         </button>
-        <app-event-creator *ngIf="showEventCreator" (close)="hideEventCreator()" (eventCreated)="onEventCreated()"></app-event-creator>
         <app-event-list #eventList></app-event-list>
       </div>
+      <app-event-creator 
+        *ngIf="showEventCreator" 
+        (close)="hideEventCreator()" 
+        (eventCreated)="onEventCreated()">
+      </app-event-creator>
     </div>
   </div>
 </div>

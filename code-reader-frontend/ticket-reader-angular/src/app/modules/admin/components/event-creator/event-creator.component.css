@@ -1,33 +1,46 @@
 /* Overlay con animación */
+
 .modal-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  z-index: 999;
-  animation: fadeIn 0.3s ease;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1;
 }
-
 /* Tarjeta del creador de eventos */
 .event-creator-card {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: 90%;
-  max-width: 500px;
-  background-color: var(--card-background);
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: white;
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 1px solid #ccc;
   box-shadow: 0 20px 25px -5px var(--shadow-color),
               0 10px 10px -5px var(--shadow-color);
   z-index: 1000;
-  animation: slideUp 0.3s ease;
+  animation: slideIn 0.3s ease-out;
 }
-
+:host {
+  position: fixed; /* Cambiado de absolute a fixed */
+  top: 60px; /* Altura del upper-menu */
+  left: 250px; /* Ancho del sidebar */
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+:host.visible {
+  display: block;
+}
 /* Encabezado */
 .card-header {
   display: flex;
@@ -124,6 +137,28 @@
   cursor: not-allowed;
 }
 
+/* Ajuste para cuando el sidebar está colapsado */
+:host-context(.sidebar-collapsed) {
+  left: 80px;
+}
+
+/* Media queries para responsive */
+@media (max-width: 768px) {
+  :host {
+    left: 80px;
+  }
+  
+  :host-context(.sidebar-collapsed) {
+    left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  :host {
+    left: 0;
+  }
+}
+
 /* Animaciones */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -162,6 +197,16 @@
 
   .form-group {
     margin-bottom: 1rem;
+  }
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

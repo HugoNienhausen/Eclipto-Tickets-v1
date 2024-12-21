@@ -12,7 +12,17 @@
 .user-panel.sidebar-collapsed {
   margin-left: 80px;
 }
-
+.content-wrapper {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+.content-wrapper.blur {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
 /* Grid de estadísticas */
 .stats-grid {
   display: grid;
@@ -298,79 +308,5 @@ tr:hover {
   .recent-events,
   .table-container {
     background-color: var(--card-background);
-  }
-}
-
-/* Botón de crear evento */
-.create-event-btn {
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
-
-.create-event-btn:hover {
-  transform: translateY(-2px) scale(1.05);
-  background-color: var(--primary-hover);
-  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
-}
-
-.create-event-btn i {
-  font-size: 24px;
-}
-
-.create-event-btn::after {
-  content: 'Crear Evento';
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--text-primary);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.create-event-btn:hover::after {
-  opacity: 1;
-  visibility: visible;
-  bottom: -35px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .create-event-btn {
-    right: 1.5rem;
-    bottom: 1.5rem;
-    width: 48px;
-    height: 48px;
-  }
-
-  .create-event-btn i {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .create-event-btn {
-    right: 1rem;
-    bottom: 1rem;
   }
 }
