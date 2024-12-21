@@ -1,7 +1,9 @@
 package com.firstprojects.codereader.demo.rest;
 
+import com.firstprojects.codereader.demo.config.FileStorageConfig;
 import com.firstprojects.codereader.demo.entities.Event;
 import com.firstprojects.codereader.demo.services.EventService;
+import com.firstprojects.codereader.demo.services.FileStorageService;
 import com.firstprojects.codereader.demo.services.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 @RestController
@@ -19,18 +22,33 @@ public class EventController {
 
     private final EventService eventService;
     private final JwtService jwtService;
+    private final FileStorageService fileStorageService;
 
     @PostMapping("/create")
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<?> createEvent(
-            @RequestHeader("Authorization") String authHeader,
-            @RequestBody Event event
+        @RequestParam("image") MultipartFile image,
+        @RequestParam("name") String name,
+        @RequestParam("description") String description,
+        @RequestParam("date") String date,
+        @RequestParam("maxAttendees") int maxAttendees,
+        @RequestParam("ticketPrice") double ticketPrice,
+        @RequestHeader("Authorization") String authHeader
     ) {
         try {
-            // Extraer el token del header (eliminar "Bearer ")
             String jwt = authHeader.substring(7);
-            // Obtener el ID del usuario del token
             Long userId = jwtService.extractUserId(jwt);
+            
+            Event event = new Event();
+            event.setName(name);
+            event.setDescription(description);
+            event.setDate(date);
+            event.setMaxAttendees(maxAttendees);
+            event.setTicketPrice(ticketPrice);
+            
+            String fileName = fileStorageService.storeFile(image);
+            String imageUrl = "/api/uploads/" + fileName;
+            event.setImageUrl(imageUrl);
             
             Event newEvent = eventService.createEvent(event, userId);
             return ResponseEntity.status(HttpStatus.CREATED).body(newEvent);

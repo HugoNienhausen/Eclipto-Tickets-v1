@@ -176,3 +176,67 @@
   font-size: 0.75rem;
   margin-top: 0.25rem;
 }
+/* Estilos para la subida de imágenes */
+.image-upload {
+  margin-bottom: 2rem;
+}
+
+.image-preview {
+  width: 100%;
+  height: 200px;
+  border: 2px dashed var(--border-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.image-preview:hover {
+  border-color: var(--primary-color);
+  background-color: var(--hover-background);
+}
+
+.image-preview.has-image {
+  border-style: solid;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.upload-placeholder i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.image-preview input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Estilo para arrastrar y soltar */
+.image-preview.dragover {
+  border-color: var(--primary-color);
+  background-color: var(--hover-background);
+}

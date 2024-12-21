@@ -1,1 +1,7 @@
-{}
+{
+    "dependencies": {
+    "ngx-toastr": "^17.0.0",
+    "@types/file-saver": "^2.0.5",
+    "@angular/animations": "^17.0.0"
+  }
+}

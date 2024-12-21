@@ -11,6 +11,7 @@ interface Event {
   maxAttendees: number;
   ticketPrice: number;
   userId: number;  // Cambiamos user.id por userId
+  imageUrl: string;
 }
 
 @Component({

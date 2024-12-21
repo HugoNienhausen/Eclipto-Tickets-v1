@@ -32,11 +32,13 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/public/**").permitAll()
-                .requestMatchers("/events/public/**").permitAll()
-                .requestMatchers("/api/v1/auth/**").permitAll()
-                .anyRequest().authenticated()
-                )
+                                .requestMatchers("/api/uploads/**").permitAll()
+                                .requestMatchers("/public/**").permitAll()
+                                .requestMatchers("/events/public/**").permitAll()
+                                .requestMatchers("/api/v1/auth/**").permitAll()
+                                .requestMatchers("/events/create").hasAnyRole("USER", "ADMIN")
+                                .anyRequest().authenticated()
+                                )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
