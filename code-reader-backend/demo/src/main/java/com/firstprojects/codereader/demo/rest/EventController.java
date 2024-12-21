@@ -12,8 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
+import java.time.LocalDate;
 import java.util.List;
+
 @RestController
 @RequestMapping("/events")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -42,7 +43,7 @@ public class EventController {
             Event event = new Event();
             event.setName(name);
             event.setDescription(description);
-            event.setDate(date);
+            event.setDate(LocalDate.parse(date));
             event.setMaxAttendees(maxAttendees);
             event.setTicketPrice(ticketPrice);
             

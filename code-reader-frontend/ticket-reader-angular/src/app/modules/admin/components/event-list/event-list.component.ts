@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../../core/services/auth.service';
-
+import { environment } from '../../../../../environments/environment';
 interface Event {
   id: number;
   name: string;
@@ -54,5 +54,11 @@ export class EventListComponent implements OnInit {
     if (userId) {
       window.open(`/public/event/${userId}/${event.id}`, '_blank');
     }
+  }
+  getImageUrl(event: Event): string {
+    if (event.imageUrl) {
+      return `${environment.apiUrl}${event.imageUrl}`;
+    }
+    return environment.defaultImageUrl;
   }
 }

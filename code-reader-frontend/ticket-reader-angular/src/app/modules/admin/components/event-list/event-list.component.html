@@ -1,7 +1,7 @@
 <div *ngIf="events.length > 0; else noEvents" class="grid-container">
   <div *ngFor="let event of events" class="event-card">
     <div class="event-image">
-      <img [src]="event.imageUrl || '../../../assets/images/default-event.png'" [alt]="event.name">
+      <img [src]="getImageUrl(event)" [alt]="event.name">
     </div>
     <div class="card-content">
       <h2>{{ event.name }}</h2>

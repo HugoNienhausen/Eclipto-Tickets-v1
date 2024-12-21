@@ -7,12 +7,14 @@
 }
 
 .event-card {
+  display: flex;
+  flex-direction: column;
+  background:white;
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   padding: 1.25rem;
-  box-shadow: 0 4px 6px -1px var(--shadow-color),
-              0 2px 4px -1px var(--shadow-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -82,6 +84,23 @@
   outline: none;
   box-shadow: 0 0 0 2px var(--focus-ring);
 }
+.event-image {
+  width: 100%;
+  height: 200px; /* o el alto que prefieras */
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* esto hace que la imagen cubra todo el espacio sin deformarse */
+  object-position: center;
+}
+
+.card-content {
+  padding: 1rem;
+}
 
 /* Mensaje de no eventos */
 .no-events {
@@ -128,21 +147,4 @@
   .event-card p {
     font-size: 0.8125rem;
   }
-}
-.event-image {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 0.5rem 0.5rem 0 0;
-  margin: -1.25rem -1.25rem 1rem -1.25rem;
-}
-
-.event-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 0 1rem;
 }

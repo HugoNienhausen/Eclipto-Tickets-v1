@@ -310,3 +310,52 @@ tr:hover {
     background-color: var(--card-background);
   }
 }
+
+/*Boton para crear evento*/
+.create-event-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.create-event-btn i {
+  font-size: 24px;
+}
+
+.create-event-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--primary-hover);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .create-event-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+/* Asegúrate de que el botón se ajuste cuando el sidebar está colapsado */
+.sidebar-collapsed .create-event-btn {
+  right: calc(2rem + 80px);
+}
+
+@media (max-width: 768px) {
+  .sidebar-collapsed .create-event-btn {
+    right: 1.5rem;
+  }
+}

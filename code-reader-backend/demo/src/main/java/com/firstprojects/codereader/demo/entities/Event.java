@@ -30,7 +30,8 @@ public class Event {
     private double ticketPrice;  // Precio de cada ticket
     @Column(nullable = false)
     private int availableSeats;  // Nuevo campo para controlar las plazas disponibles
-
+    @Column(name = "image_url")
+    private String imageUrl;
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonBackReference  // Evita la serialización del lado inverso
