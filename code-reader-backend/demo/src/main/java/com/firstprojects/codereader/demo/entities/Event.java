@@ -20,7 +20,7 @@ public class Event {
     private Long id;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")  // o el número máximo de caracteres que desees
     private String description;
     @Column(nullable = false)
     private LocalDate date;  // Campo para almacenar la fecha del evento
