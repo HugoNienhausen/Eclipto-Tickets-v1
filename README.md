@@ -1,0 +1,1 @@
+[![Watch the video]([https://raw.githubusercontent.com/username/repository/branch/path/to/thumbnail.jpg](https://github.com/HugoNienhausen/ticket-reader-app/blob/main/Screenshot%202025-02-09%20at%2020.56.31.png))]([https://raw.githubusercontent.com/username/repository/branch/path/to/video.mp4](https://github.com/HugoNienhausen/ticket-reader-app/raw/refs/heads/main/Demo.mp4))
