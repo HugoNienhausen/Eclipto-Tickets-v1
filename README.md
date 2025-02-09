@@ -9,9 +9,8 @@
 <div align="center">
   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular"/>
   <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot"/>
-  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+  <img src="https://img.shields.io/badge/MySQL-316192?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
 </div>
-![Preview Video](preview.gif)
 ## 📋 Descripción
 
 Eclipto Manager es una aplicación web moderna para la gestión de eventos y venta de tickets. Permite a los organizadores crear y administrar eventos, mientras que los usuarios pueden comprar tickets de forma segura y sencilla.
@@ -111,22 +110,12 @@ JWT_SECRET=tu_secret_key
 GOOGLE_CLIENT_ID=tu_google_client_id
 ```
 
-## 🤝 Contribuir
-
-1. Fork del repositorio
-2. Crear rama feature (`git checkout -b feature/AmazingFeature`)
-3. Commit cambios (`git commit -m 'Add AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abrir Pull Request
-
-## 📄 Licencia
-
-Distribuido bajo la licencia MIT. Ver `LICENSE` para más información.
 
 <div align="center">
-  <p>Desarrollado con ❤️ por <a href="https://github.com/tu-usuario">Tu Nombre</a></p>
+  <p>Desarrollado con ❤️ por <a href="https://github.com/HugoNienhausen">Hugo Nienhausen Mesanza</a></p>
 </div>
-/* Estilos para el README */
+
+<style>
 img {
   margin: 0 5px;
 }
@@ -174,3 +163,4 @@ a:hover {
 .shields-container img {
   margin: 0 5px;
 }
+</style>
