@@ -38,7 +38,7 @@ Eclipto Manager es una aplicación web moderna para la gestión de eventos y ven
 - Spring Boot 3
 - Java 17
 - Spring Security
-- PostgreSQL
+- MySQL
 - Hibernate
 - Maven
 
@@ -62,7 +62,7 @@ Implementa una arquitectura en capas:
 ### Prerrequisitos
 - Node.js (v18+)
 - Java JDK 17
-- PostgreSQL
+- MySQL
 - Maven
 
 ### Pasos para ejecutar el frontend
@@ -105,7 +105,7 @@ mvn spring-boot:run
 Crear archivo `.env` en la raíz del proyecto:
 
 ```env
-DATABASE_URL=postgresql://localhost:5432/eclipto
+DATABASE_URL=mysql://localhost:5432/eclipto
 JWT_SECRET=tu_secret_key
 GOOGLE_CLIENT_ID=tu_google_client_id
 ```
