@@ -1,11 +1,8 @@
-🎫 Eclipto Manager
-
-Event Management and Ticket Sales System
-
 <div align="center">
-  <img src="preview.gif" alt="Application Preview" style="max-width: 800px; border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <h1>🎫 Eclipto Manager</h1>
+  <p>Event management and ticket sales system</p>
+    <img src="preview.gif" alt="Application preview" style="max-width: 800px; border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 </div>
-
 
 <div align="center">
   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular"/>
@@ -13,63 +10,61 @@ Event Management and Ticket Sales System
   <img src="https://img.shields.io/badge/MySQL-316192?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
 </div>
 
+## 📋 Description
 
-📋 Description
+Eclipto Manager is a modern web application for event management and ticket sales. It allows organizers to create and manage events, while users can purchase tickets securely and easily.
 
-Eclipto Manager is a modern web application for event management and ticket sales. It allows organizers to create and manage events, while users can securely and easily purchase tickets.
+## ✨ Main Features
 
-✨ Key Features
-	•	🔐 Authentication with JWT and Google Sign-In
-	•	👥 User roles (Admin/User)
-	•	📅 Complete event management
-	•	🎟️ Ticket sales system
-	•	📊 Admin panel
-	•	📱 Responsive design
+- 🔐 Authentication with JWT and Google Sign-In
+- 👥 User roles (Admin/User)
+- 📅 Complete event management
+- 🎟️ Ticket sales system
+- 📊 Admin dashboard
+- 📱 Responsive design
 
-🛠️ Technologies Used
+## 🛠️ Technologies Used
 
-Frontend
-	•	Angular 18
-	•	TypeScript
-	•	Bootstrap
-	•	NgRx for state management
-	•	Angular Material
-	•	JWT for authentication
+### Frontend
+- Angular 18
+- TypeScript
+- Bootstrap
+- NgRx for state management
+- Angular Material
+- JWT for authentication
 
-Backend
-	•	Spring Boot 3
-	•	Java 17
-	•	Spring Security
-	•	MySQL
-	•	Hibernate
-	•	Maven
+### Backend
+- Spring Boot 3
+- Java 17
+- Spring Security
+- MySQL
+- Hibernate
+- Maven
 
-🏗️ Architecture
+## 🏗️ Architecture
 
-Frontend
+### Frontend
+The application is built following Angular's modular architecture pattern:
+- Core: Singleton services, guards and models
+- Shared: Reusable components
+- Features: Functional modules (auth, admin, user)
 
-The application follows Angular’s modular architecture pattern:
-	•	Core: Singleton services, guards, and models
-	•	Shared: Reusable components
-	•	Features: Functional modules (auth, admin, user)
-
-Backend
-
+### Backend
 Implements a layered architecture:
-	•	Controllers: REST API
-	•	Services: Business logic
-	•	Repositories: Data access
-	•	Security: Security configuration and JWT
+- Controllers: REST API
+- Services: Business logic
+- Repositories: Data access
+- Security: Security configuration and JWT
 
-🚀 Installation
+## 🚀 Installation
 
-Prerequisites
-	•	Node.js (v18+)
-	•	Java JDK 17
-	•	MySQL
-	•	Maven
+### Prerequisites
+- Node.js (v18+)
+- Java JDK 17
+- MySQL
+- Maven
 
-Steps to Run the Frontend
+### Steps to run the frontend
 
 # Clone the repository
 git clone https://github.com/your-username/eclipto-manager.git
@@ -92,16 +87,18 @@ mvn clean install
 # Run the application
 mvn spring-boot:run
 
-🔧 Configuration
-	1.	Create a PostgreSQL database
-	2.	Set up environment variables:
-	•	DATABASE_URL
-	•	JWT_SECRET
-	•	GOOGLE_CLIENT_ID
 
-📝 Environment Variables
+## 🔧 Configuration
 
-Create a .env file in the project’s root directory:
+1. Create MySQL database
+2. Configure environment variables:
+   - `DATABASE_URL`
+   - `JWT_SECRET`
+   - `GOOGLE_CLIENT_ID`
+
+## 📝 Environment Variables
+
+Create `.env` file in project root:
 
 DATABASE_URL=mysql://localhost:5432/eclipto
 JWT_SECRET=your_secret_key
