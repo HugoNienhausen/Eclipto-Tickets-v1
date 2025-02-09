@@ -41,7 +41,7 @@ bootstrapApplication(AppComponent, {
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '515490790930-eajv7nc5pn355hlg5tqree5p40jvc64v.apps.googleusercontent.com',
+              '*********************************',
               {
                 oneTapEnabled: false,
                 scopes: 'email profile'
