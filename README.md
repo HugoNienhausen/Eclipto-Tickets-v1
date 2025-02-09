@@ -2,6 +2,8 @@
 <div align="center">
   <h1>🎫 Eclipto Manager</h1>
   <p>Sistema de gestión de eventos y venta de tickets</p>
+    <img src="preview.gif" alt="Preview de la aplicación" style="max-width: 800px; border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+
 </div>
 
 <div align="center">
@@ -124,3 +126,51 @@ Distribuido bajo la licencia MIT. Ver `LICENSE` para más información.
 <div align="center">
   <p>Desarrollado con ❤️ por <a href="https://github.com/tu-usuario">Tu Nombre</a></p>
 </div>
+/* Estilos para el README */
+img {
+  margin: 0 5px;
+}
+
+h1 {
+  color: #4f46e5;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #1e293b;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+code {
+  background-color: #f8fafc;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: 'Consolas', monospace;
+}
+
+pre {
+  background-color: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.shields-container {
+  margin: 20px 0;
+}
+
+.shields-container img {
+  margin: 0 5px;
+}
