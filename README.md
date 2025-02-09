@@ -1,1 +1,1 @@
-![Preview Video](preview.webp)
+![Preview Video](preview.gif)
