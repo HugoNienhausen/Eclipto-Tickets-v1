@@ -112,5 +112,5 @@ GOOGLE_CLIENT_ID=tu_google_client_id
 
 
 <div align="center">
-  <p>Desarrollado con ❤️ por <a href="https://github.com/HugoNienhausen">Hugo Nienhausen Mesanza</a></p>
+  <p>Desarrollado con ❤️ por <a href="https://github.com/HugoNienhausen">Hugo Nienhausen</a></p>
 </div>
