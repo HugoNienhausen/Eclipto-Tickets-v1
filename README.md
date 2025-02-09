@@ -1,1 +1,1 @@
-[![Watch the demo video](https://raw.githubusercontent.com/HugoNienhausen/ticket-reader-app/main/Screenshot%202025-02-09%20at%2020.56.31.png)](https://raw.githubusercontent.com/HugoNienhausen/ticket-reader-app/main/Demo.mp4)
+![Preview GIF](preview.gif)
