@@ -8,6 +8,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.util.ByteArrayDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -23,6 +24,9 @@ public class EmailService {
 
     @Autowired
     private JavaMailSender mailSender;
+    
+    @Value("${spring.mail.username}")
+    private String mailFrom;
 
     @Async
     public void sendTicketEmail(String toEmail, String ticketCode, String eventName, String eventDescription, String eventDate) throws Exception {
@@ -51,7 +55,7 @@ public class EmailService {
 
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        helper.setFrom("hugo@eclipto-tickets.com");
+        helper.setFrom(mailFrom);
         helper.setTo(toEmail);
         helper.setSubject(subject);
         helper.setText(body, true); // Permitir HTML

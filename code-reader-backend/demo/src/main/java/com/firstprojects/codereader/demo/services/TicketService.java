@@ -40,7 +40,17 @@ public class TicketService {
         event.reduceAvailableSeats(1);
         eventRepository.save(event);  // Guardar el evento con el nuevo valor de availableSeats
 
-        emailService.sendTicketEmail(buyerEmail, savedTicket.getId().toString(), event.getName(), event.getDescription(), event.getDate().toString());
+        try {
+            emailService.sendTicketEmail(
+                buyerEmail,
+                savedTicket.getId().toString(),
+                event.getName(),
+                event.getDescription(),
+                event.getDate().toString()
+            );
+        } catch (Exception emailError) {
+            System.err.println("Error enviando email de ticket: " + emailError.getMessage());
+        }
 
         return savedTicket;
     }

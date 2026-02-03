@@ -13,8 +13,8 @@
   <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/" target="_blank">
     <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot"/>
   </a>
-  <a href="https://dev.mysql.com/doc/" target="_blank">
-    <img src="https://img.shields.io/badge/MySQL-316192?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
+  <a href="https://www.postgresql.org/docs/" target="_blank">
+    <img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
   </a>
 </div>
 
@@ -31,91 +31,62 @@
   - 📊 Admin dashboard
   - 📱 Responsive design
 
-## 🛠️ Technologies Used
+## 🚀 Instalación rápida (local)
 
-  ### Frontend
-  - Angular 18
-  - TypeScript
-  - Bootstrap
-  - NgRx for state management
-  - Angular Material
-  - JWT for authentication
-  
-  ### Backend
-  - Spring Boot 3
-  - Java 17
-  - Spring Security
-  - MySQL
-  - Hibernate
-  - Maven
+### Requisitos
+- Node.js (v18+)
+- Java JDK 17
+- PostgreSQL
+- Maven
 
-## 🏗️ Architecture
+### 1) Base de datos
+Crear la base y el usuario en PostgreSQL:
+- Base: `code_reader_app`
+- Usuario: `code-reader`
+- Password: `code-reader`
 
-  ### Frontend
-  The application is built following Angular's modular architecture pattern:
-  - Core: Singleton services, guards and models
-  - Shared: Reusable components
-  - Features: Functional modules (auth, admin, user)
-  
-  ### Backend
-  Implements a layered architecture:
-  - Controllers: REST API
-  - Services: Business logic
-  - Repositories: Data access
-  - Security: Security configuration and JWT
+La app se conecta usando esta configuración:
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/code_reader_app
+spring.datasource.username=code-reader
+spring.datasource.password=code-reader
+```
 
-## 🚀 Installation
+### 2) Backend (Spring Boot)
+```bash
+cd code-reader-backend/demo
+mvn clean install
+mvn spring-boot:run
+```
 
-  ### Prerequisites
-  - Node.js (v18+)
-  - Java JDK 17
-  - MySQL
-  - Maven
-  
-  ### Steps to run the frontend
-  
-  ```bash
-  # Clone repository
-  git clone https://github.com/HugoNienhausen/eclipto-manager-v1.git
-  
-  # Install dependencies
-  cd eclipto-manager/frontend
-  npm install
-  
-  # start frontend server
-  ng serve
-  ```
-  
-  ### Steps to run the backend
-  
-  ```bash
-  # change to backend directory
-  cd eclipto-manager/backend
-  
-  # Compile the project
-  mvn clean install
-  
-  # Execute app
-  mvn spring-boot:run
-  ```
+Backend en `http://localhost:8080`
 
-## 🔧 Configuration
+### 3) Frontend (Angular)
+```bash
+cd code-reader-frontend/ticket-reader-angular
+npm install
+npm start
+```
 
-  1. Create MySQL Schema
-  2. Configure Path Variables
-     - `DATABASE_URL`
-     - `JWT_SECRET`
-     - `GOOGLE_CLIENT_ID`
+Frontend en `http://localhost:4200`
 
-## 📝 Path Variables
+### 4) Configuración opcional
+Si quieres activar Google Sign-In o email, configura variables de entorno antes de arrancar el backend:
 
-  Create file `.env` at the root of the project:
-  
-  ```env
-  DATABASE_URL=mysql://localhost:5432/eclipto
-  JWT_SECRET=your_secret_key
-  GOOGLE_CLIENT_ID=your_google_client_id
-  ```
+```bash
+export GOOGLE_CLIENT_ID="TU_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+export SPRING_MAIL_USERNAME="tu_email@gmail.com"
+export SPRING_MAIL_PASSWORD="tu_app_password"
+```
+
+Notas:
+- Para Gmail usa **App Password** (no tu contraseña normal).
+- El `GOOGLE_CLIENT_ID` debe coincidir con el Client ID configurado en el frontend.
+  - Frontend: `code-reader-frontend/ticket-reader-angular/src/main.ts` (`GoogleLoginProvider`)
+
+### 5) Endpoints locales por defecto
+- API: `http://localhost:8080`
+- Uploads: `http://localhost:8080/api/uploads`
 
 
 <div align="center">

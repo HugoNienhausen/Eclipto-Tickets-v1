@@ -21,28 +21,44 @@ public class TicketController {
     private TicketService ticketService;
 
     @PostMapping("/create")
-    public ResponseEntity<List<Ticket>> createTickets(@RequestBody TicketRequest ticketRequest) {
+    public ResponseEntity<?> createTickets(@RequestBody TicketRequest ticketRequest) {
         int ticketQuantity = ticketRequest.getTicketQuantity();
         List<Ticket> tickets = new ArrayList<>();
-try{
-        for (int i = 0; i < ticketQuantity; i++) {
-            Ticket ticket = ticketService.createTicket(
-                    ticketRequest.getEventId(),
-                    ticketRequest.getBuyerName(),
-                    ticketRequest.getBuyerSurname(),
-                    ticketRequest.getBuyerEmail()
-            );
-            tickets.add(ticket);
+
+        if (ticketRequest.getEventId() == null) {
+            return ResponseEntity.badRequest().body("eventId es requerido");
+        }
+        if (ticketQuantity < 1) {
+            return ResponseEntity.badRequest().body("ticketQuantity debe ser mayor a 0");
+        }
+        if (ticketRequest.getBuyerName() == null || ticketRequest.getBuyerName().isBlank()) {
+            return ResponseEntity.badRequest().body("buyerName es requerido");
+        }
+        if (ticketRequest.getBuyerSurname() == null || ticketRequest.getBuyerSurname().isBlank()) {
+            return ResponseEntity.badRequest().body("buyerSurname es requerido");
+        }
+        if (ticketRequest.getBuyerEmail() == null || ticketRequest.getBuyerEmail().isBlank()) {
+            return ResponseEntity.badRequest().body("buyerEmail es requerido");
         }
 
-        return ResponseEntity.ok(tickets); // Retorna la lista de tickets creados
-}catch(Exception e){
-    System.out.println("Error en la creación de tickets" + e.getMessage());
-    e.printStackTrace();
-    return ResponseEntity.badRequest().body(null);
+        try {
+            for (int i = 0; i < ticketQuantity; i++) {
+                Ticket ticket = ticketService.createTicket(
+                        ticketRequest.getEventId(),
+                        ticketRequest.getBuyerName(),
+                        ticketRequest.getBuyerSurname(),
+                        ticketRequest.getBuyerEmail()
+                );
+                tickets.add(ticket);
+            }
 
-}
-}
+            return ResponseEntity.ok(tickets); // Retorna la lista de tickets creados
+        } catch (Exception e) {
+            System.out.println("Error en la creación de tickets: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Error en la creación de tickets: " + e.getMessage());
+        }
+    }
 
 }
 
